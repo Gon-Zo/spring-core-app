@@ -5,7 +5,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -50,7 +49,7 @@ public class LoggerAspect {
 
         String method = request.getMethod();
 
-        log.info("REQUEST [{}]", method);
+        log.info("REQUEST|method={}", method);
 
     }
 
@@ -60,7 +59,7 @@ public class LoggerAspect {
 
         int status = response.getStatus();
 
-        log.info("RESPONSE: {} status ({}ms)", status, endAt - startAt);
+        log.info("RESPONSE|status={}|{}ms", status, endAt - startAt);
 
     }
 }
